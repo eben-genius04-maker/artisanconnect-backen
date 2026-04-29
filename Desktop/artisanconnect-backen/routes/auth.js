@@ -33,7 +33,7 @@ router.post('/register', async (req, res) => {
     if (value.role === 'artisan') {
       await supabase.from('artisans').insert({
         profile_id: auth.user.id, trade: value.trade, city: value.city,
-        bio: value.bio  null, years_exp: value.years_exp  0, skills: value.skills || []
+        bio: value.bio || null, years_exp: value.years_exp || 0, skills: value.skills || []
       });
     }
     res.status(201).json({ message: 'Registration successful' });

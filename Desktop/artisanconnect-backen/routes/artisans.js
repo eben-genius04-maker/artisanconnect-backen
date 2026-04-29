@@ -42,7 +42,7 @@ router.put('/:id', requireAuth, async (req, res) => {
 
   const updates = { ...req.body };
   if (updates.lat && updates.lng) {
-    updates.location = 'POINT(${updates.lng} ${updates.lat});
+    updates.location = 'POINT(${updates.lng} ${updates.lat})';
     delete updates.lat; delete updates.lng;
   }
   const { data, error } = await supabase.from('artisans').update(updates).eq('id', req.params.id).select().single();

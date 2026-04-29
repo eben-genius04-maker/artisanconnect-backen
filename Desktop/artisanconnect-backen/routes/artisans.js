@@ -7,7 +7,7 @@ router.get('/search', async (req, res) => {
   const { trade, city, lat, lng, radius = 50 } = req.query;
   try {
     const { data, error } = await supabase.rpc('search_artisans', {
-      search_trade: trade  null, search_city: city  null,
+      search_trade: trade || null, search_city: city || null,
       search_lat: lat ? parseFloat(lat) : null,
       search_lng: lng ? parseFloat(lng) : null,
       radius_km: parseFloat(radius), lim: 30
